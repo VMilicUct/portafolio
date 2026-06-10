@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --hex-color: #e5e7eb;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --hex-color: #1f2937;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='41.57' height='36' overflow='visible'%3E%3Cpath d='M10.4,-3 L20.8,3 L20.8,15 L10.4,21 L0,15 L0,3 Z' fill='none' stroke='%23d1d5db' stroke-width='0.5'/%3E%3Cpath d='M31.2,-3 L41.57,3 L41.57,15 L31.2,21 L20.8,15 L20.8,3 Z' fill='none' stroke='%23d1d5db' stroke-width='0.5'/%3E%3Cpath d='M20.8,15 L31.2,21 L31.2,33 L20.8,39 L10.4,33 L10.4,21 Z' fill='none' stroke='%23d1d5db' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 41.57px 36px;
+}
+
+.dark body,
+body.dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='41.57' height='36' overflow='visible'%3E%3Cpath d='M10.4,-3 L20.8,3 L20.8,15 L10.4,21 L0,15 L0,3 Z' fill='none' stroke='%231f2937' stroke-width='0.5'/%3E%3Cpath d='M31.2,-3 L41.57,3 L41.57,15 L31.2,21 L20.8,15 L20.8,3 Z' fill='none' stroke='%231f2937' stroke-width='0.5'/%3E%3Cpath d='M20.8,15 L31.2,21 L31.2,33 L20.8,39 L10.4,33 L10.4,21 Z' fill='none' stroke='%231f2937' stroke-width='0.5'/%3E%3C/svg%3E");
+}
+
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.08s ease-out;
+}
+
+#cursor-squish {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-size: 41.57px 36px;
+  transform: scale(1.1, 0.5);
+  mask-image: radial-gradient(circle 200px at center, black 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle 200px at center, black 65%, transparent 100%);
+  mask-size: 400px 400px;
+  -webkit-mask-size: 400px 400px;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation-delay: 0.3s;
+}
